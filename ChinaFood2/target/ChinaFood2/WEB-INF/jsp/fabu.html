@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>发布菜品</title>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
+		<link rel="stylesheet" type="text/css" href="css/index.css"/>
+		<link rel="stylesheet" type="text/css" href="css/imgup.css"/>
+		<script src="js/jQuery1.7.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/imgUp.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		 <!--顶部导航栏-->
+		<div id="top">
+			<ul id="top-menu">
+				<li>
+					<a href="index.html">
+						<img id="icon1" src="img/gvoLrgfOM0x64AAAAASUVORK5CYII中.png"/>
+						首页
+					</a>
+				</li>
+				<li>
+					<a href="CaiPu.jsp">
+						菜谱
+					</a>
+				</li>
+				<li>
+					<a href="zhuanti.html">
+						专题
+					</a>
+				</li>
+				<li>
+					<a href="fabu.html">
+						美食发布
+					</a>
+				</li>
+			</ul>
+			<div id="top-menu-right">
+				<a href="login.html">
+					登录
+				</a>
+			</div>
+		</div>
+		<div class="container location">
+			<div id="logo">
+				<div>
+					<img id="icon2" src="img/gvoLrgfOM0x64AAAAASUVORK5CYII大.png"/>
+				</div>
+				<div id="logo-right">
+					<ul id="right-bar"> 
+						<li class="bar-li">
+							<a href="index.html">每日推荐</a>
+						</li>
+						<li class="bar-li">
+							<a href="CaiPu.jsp">菜谱</a>
+						</li>
+						<li class="bar-li">
+							<a href="zhuanti.html">美食专题</a>
+						</li>
+					</ul>
+					<div id="search">
+						<input type="text" name="searchKey" placeholder="搜索菜谱" class="sear-text">	
+						<button type="button" class="sear-btn btn-search">
+							<img class="f2" src="img/search.png"/>
+						</button>	
+					</div>
+					<a id="issue" href="#">
+						<img class="f3" src="img/add.png"/>
+						发布
+					</a>
+				</div>
+			</div>
+			<div class="bread-crumb breadcrumb">
+				<li>首页</li>
+				<li class="active">发布菜品</li>
+			</div>
+		</div>
+		<div class="container mt40">
+			<div class="img-box full">
+				<section class=" img-section">
+					<p class="up-p">作品图片：<span class="up-span">最多可以上传5张图片，马上上传</span></p>
+					<div class="z_photo upimg-div clear" >
+			   <!--<section class="up-section fl">
+					<span class="up-span"></span>
+					<img src="img/buyerCenter/a7.png" class="close-upimg">
+					<img src="img/buyerCenter/3c.png" class="type-upimg" alt="添加标签">
+					<img src="img/test2.jpg" class="up-img">
+					<p class="img-namep"></p>
+					<input id="taglocation" name="taglocation" value="" type="hidden">
+					<input id="tags" name="tags" value="" type="hidden">
+				</section>-->
+						<section class="z_file fl">
+							<img src="img/a11.png" class="add-img">
+							<input type="file" name="file" id="file" class="file" value="" accept="image/jpg,image/jpeg,image/png,image/bmp" multiple />
+						</section>
+					</div>
+				</section>
+			</div>
+			<aside class="mask works-mask">
+				<div class="mask-content">
+					<p class="del-p ">您确定要删除作品图片吗？</p>
+					<p class="check-p"><span class="del-com wsdel-ok">确定</span><span class="wsdel-no">取消</span></p>
+				</div>
+			</aside>
+		</div>
+		<div class="container mt40 center">
+			<h3 class="mb50">花了多少时间</h3>
+			<ul class="mb50">
+				<li class="fb-li">
+					<span class="fb-in">准备时间：</span>
+					<p class="fabu-input">
+						<input type="text" value="" id="prepareTime" placeholder="如:90">
+					</p>
+					<span> 分钟</span>
+				</li>
+				<li class="fb-li">
+					<span class="fb-in">烹饪时间：</span>
+					<p class="fabu-input">
+						<input type="text" value="" id="cookingTime" placeholder="如:90">
+					</p>
+					<span> 分钟</span>
+				</li>
+			</ul>
+			<h3 class="mb50">主料</h3>
+			<textarea rows="3" cols="100" class="mb50 pd20"></textarea>
+			<h3 class="mb50">配料</h3>
+			<textarea rows="3" cols="100" class="mb50 pd20"></textarea>
+			<h3 class="mb50">详细描述</h3>
+			<textarea rows="10" cols="100" class="mb50 pd20"></textarea>
+			<h3 class="mb50">给这道菜取个名字吧！</h3>
+			<p class="fb-name mb50">
+				<input type="text" value="" id="cookName" placeholder="如:红烧猪蹄">
+			</p>
+			<div class="fb-button mb50">
+				<button type="button" id="bf-button">提交</button>
+			</div>
+			
+		</div>
+		<div id="footer"class="mt80">
+			<div id="bg2">
+				<div class="container">
+					<div id="bg2-left">
+						<div id="bg2-t">
+							<ul>
+								<li><img src="img/TIM图片20170612215357.png"/></li>
+								<li><a href="#">关于我们</a></li>
+								<li><a href="#">联系我们</a></li>
+								<li><a href="#">使用帮助</a></li>
+								<li><a href="#">美食菜谱</a></li>
+								<a href="#">网站首页</a>
+							</ul>
+						</div>
+						<div id="bg22">
+							本站信息由网络收集及网友提供，中华美食网不负责信息内容的准确性和完整性，对此亦不承担任何保证责任。
+						</div>
+						<div id="bg23">
+							蜀ICP备10008552号 Copyright(©) 2005 - 2016 www.zhms.cn All rights reserved.
+						</div>
+					</div>
+					<div id="bg2-right">
+						<img src="img/erweima.jpg"/>
+						<div class="bg2-sao">
+							扫一扫加入我们
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

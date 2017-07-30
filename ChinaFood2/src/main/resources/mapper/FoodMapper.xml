@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hy.dao.FoodMapper">
+
+    <resultMap type="foodCategory" id="CateResult">
+        <id column="id" property="id" />
+        <result column="name" property="name"/>
+    </resultMap>
+
+    <resultMap type="foodScene" id="SceneResult">
+        <id column="id" property="id" />
+        <result column="name" property="name"/>
+    </resultMap>
+
+    <resultMap type="foodStyle" id="StyleResult">
+        <id column="id" property="id" />
+        <result column="name" property="name"/>
+    </resultMap>
+
+    <resultMap type="foodTaste" id="TasteResult">
+        <id column="id" property="id" />
+        <result column="name" property="name"/>
+    </resultMap>
+
+
+    <!--private long id;
+    private String name;
+    private String password;
+    private String province;
+    private String city;
+    private String description;
+    private int ismanager;//0是普通用户，1是管理员
+    private String gender;
+    private Set<Food> foods;//所发表的菜谱-->
+    <resultMap  id="UserFResult" type="user">
+        <id column="id" property="id" />
+        <result column="name" property="name"/>
+        <result column="password" property="password"/>
+        <result column="province" property="province"/>
+        <result column="city" property="city"/>
+        <result column="description" property="description"/>
+        <result column="gender" property="gender"/>
+        <result column="ismanager" property="ismanager"/>
+    </resultMap>
+
+    <resultMap type="food" id="FoodResult">
+        <id column="id" property="id" /> <!-- property:类中的属性名  column:数据库中对应的属性名 -->
+        <result column="name" property="name"/>
+        <result column="description" property="description"/>
+        <result column="images" property="images" />
+        <result column="state" property="state" />
+        <association property="category" column="category_id" select="findCateById"/>
+        <association property="user" column="user_id" select="findUserFById"/>
+        <collection property="styles" column="id" select="findStyById"/>
+        <collection property="scenes" column="id" select="findScenById"/>
+        <collection property="tastes" column="id" select="findTasById"/>
+    </resultMap>
+
+
+    <select id="findUserFById"  parameterType="long" resultMap="UserFResult">
+        select * from f_user where id=#{id}
+    </select>
+
+    <select id="findAllFood"  resultMap="FoodResult">
+        select * from f_food
+    </select>
+
+    <select id="findCateById" parameterType="long" resultMap="CateResult">
+        select * from f_category where id=#{id}
+    </select>
+
+
+   <!-- <select id="findMethodById" parameterType="long" resultMap="MethodResult">
+        select * from f_method where id=#{id}
+    </select>-->
+    <select id="findStyById" parameterType="long" resultMap="StyleResult">
+        select id,name
+        from f_food_style,f_style
+        where food_id=#{id} and style_id=id
+    </select>
+
+    <select id="findScenById" parameterType="long" resultMap="SceneResult">
+        select id,name
+        from f_food_scene,f_scene
+        where food_id=#{id} and scene_id=id
+    </select>
+
+    <select id="findTasById" parameterType="long" resultMap="TasteResult">
+        select id,name
+        from f_food_taste,f_taste
+        where food_id=#{id} and taste_id=id
+    </select>
+
+    <!--添加食物-->
+
+</mapper>

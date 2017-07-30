@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hy.dao.UserMapper">
+    <resultMap type="foodCategory" id="CateUResult">
+        <id column="id" property="id" />
+        <result column="name" property="name"/>
+    </resultMap>
+
+    <resultMap type="foodScene" id="SceneUResult">
+        <id column="id" property="id" />
+        <result column="name" property="name"/>
+    </resultMap>
+
+    <resultMap type="foodStyle" id="StyleUResult">
+        <id column="id" property="id" />
+        <result column="name" property="name"/>
+    </resultMap>
+
+    <resultMap type="foodTaste" id="TasteUResult">
+        <id column="id" property="id" />
+        <result column="name" property="name"/>
+    </resultMap>
+
+    <resultMap type="food" id="FoodUResult">
+        <id column="id" property="id" /> <!-- property:类中的属性名  column:数据库中对应的属性名 -->
+        <result column="name" property="name"/>
+        <result column="description" property="description"/>
+        <result column="images" property="images" />
+        <result column="state" property="state" />
+        <association property="category" column="category_id" select="findCateUById"/>
+
+        <collection property="styles" column="id" select="findStyUById"/>
+        <collection property="scenes" column="id" select="findScenUById"/>
+        <collection property="tastes" column="id" select="findTasUById"/>
+    </resultMap>
+
+    <resultMap  id="UserUResult" type="user">
+        <id column="id" property="id" />
+        <result column="name" property="name"/>
+        <result column="password" property="password"/>
+        <result column="province" property="province"/>
+        <result column="city" property="city"/>
+        <result column="description" property="description"/>
+        <result column="gender" property="gender"/>
+        <result column="ismanager" property="ismanager"/>
+        <collection property="foods" column="id" select="findFoodUById"/>
+    </resultMap>
+
+    <select id="findStyUById" parameterType="long" resultMap="StyleUResult">
+        select id,name
+        from f_food_style,f_style
+        where food_id=#{id} and style_id=id
+    </select>
+
+    <select id="findScenUById" parameterType="long" resultMap="SceneUResult">
+        select id,name
+        from f_food_scene,f_scene
+        where food_id=#{id} and scene_id=id
+    </select>
+
+    <select id="findTasUById" parameterType="long" resultMap="TasteUResult">
+        select id,name
+        from f_food_taste,f_taste
+        where food_id=#{id} and taste_id=id
+    </select>
+
+
+    <select id="findFoodUById"  parameterType="long" resultMap="FoodUResult">
+        select * from f_food where user_id=#{id}
+    </select>
+
+    <select id="findCateUById" parameterType="long" resultMap="CateUResult">
+        select * from f_category where id=#{id}
+    </select>
+
+    <select id="findAllUser"  resultMap="UserUResult">
+        select * from f_user
+    </select>
+
+    <select id="findUserByName" parameterType="string" resultMap="UserUResult">
+        select * from f_user where name=#{name}
+    </select>
+
+    <insert id="insertUser" parameterType="user">
+        <selectKey keyProperty="id" resultType="long" order="BEFORE">
+            select f_user_seq.nextval from dual
+        </selectKey>
+        insert into f_user(id,name,password,province,city,description,gender)
+        values(#{id},#{name},#{password},#{province},#{city},#{description},#{gender})
+    </insert>
+
+    <update id="changePw" parameterType="user">
+        update f_user set password=#{password} where id=#{id}
+    </update>
+
+    <!--insert into f_user(id,name,password,province,city,description,gender) values(f_user_seq.nextval,'kkk','kkk','江西','南昌','ddd','男');-->
+</mapper>
