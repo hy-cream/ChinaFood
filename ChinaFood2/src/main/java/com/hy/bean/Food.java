@@ -4,6 +4,7 @@ package com.hy.bean;
 
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Set;
 
 /**
@@ -24,7 +25,15 @@ public class Food implements Serializable,Comparable<Food>{
     private FoodMethod method;//做法
 
     public Food() {
+    }
 
+    public Food(String name, User user, FoodCategory category,
+                String description, String state) {
+        this.name = name;
+        this.user = user;
+        this.category = category;
+        this.description = description;
+        this.state = state;
     }
 
     public void setId(long id) {

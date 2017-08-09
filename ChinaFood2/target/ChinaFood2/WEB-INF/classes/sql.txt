@@ -64,6 +64,30 @@ create sequence f_food_seq
 increment by 1
 start with 1;
 
+---------------做法表----------
+create table f_method(
+    id number primary key,
+    prepare_time varchar2(20),
+    cook_time varchar2(20),
+    main_material varchar2(200),
+    other_material varchar2(200),
+    step varchar2(1000),
+    issue_time date
+);
+
+create sequence f_method_seq
+increment by 1
+start with 6;
+
+insert into f_method values(1,'30分钟','20分钟','面粉，肉','油盐酱醋茶','假装这里有个步骤','13-3月-2017');
+insert into f_method values(2,'20分钟','40分钟','面粉222，肉','油盐酱醋茶','假装这里有个步骤2222222','01-2月-2017');
+insert into f_method values(3,'30分钟','20分钟','面粉333，肉','油盐酱醋茶','假装这里有个步骤3333333333','23-4月-2017');
+insert into f_method values(4,'30分钟','20分钟','面粉444，肉','油盐酱醋茶','假装这里有个步骤44444444444','13-6月-2017');
+insert into f_method values(5,'30分钟','20分钟','面粉555，肉','油盐酱醋茶','假装这里有个步骤5555555555','09-5月-2017');
+alter table f_method modify  prepare_time varchar2(20);
+
+
+
 
 -------菜品表--------
 create table f_style(
@@ -159,22 +183,3 @@ insert into f_food_scene values(5,1);
 
 insert into f_food_taste values(5,2);
 insert into f_food_style values(5,5);
-
----------------做法表----------
-create table f_method(
-    id number primary key,
-    food_id number references f_food(id),
-    prepare_time varchar2(20),
-    cook_time varchar2(20),
-    main_material varchar2(200),
-    other_material varchar2(200),
-    step varchar2(1000),
-    issue_time date
-);
-insert into f_method values(1,'30分钟','20分钟','面粉，肉','油盐酱醋茶','假装这里有个步骤','13-3月-2017');
-insert into f_method values(2,'20分钟','40分钟','面粉222，肉','油盐酱醋茶','假装这里有个步骤2222222','01-2月-2017');
-insert into f_method values(3,'30分钟','20分钟','面粉333，肉','油盐酱醋茶','假装这里有个步骤3333333333','23-4月-2017');
-insert into f_method values(4,'30分钟','20分钟','面粉444，肉','油盐酱醋茶','假装这里有个步骤44444444444','13-6月-2017');
-insert into f_method values(5,'30分钟','20分钟','面粉555，肉','油盐酱醋茶','假装这里有个步骤5555555555','09-5月-2017');
-alter table f_method modify  prepare_time varchar2(20);
-alter table f_method drop column food_id;

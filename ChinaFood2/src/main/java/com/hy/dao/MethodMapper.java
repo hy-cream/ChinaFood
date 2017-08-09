@@ -4,6 +4,7 @@ package com.hy.dao;
 import com.hy.bean.FoodMethod;
 import org.springframework.stereotype.Repository;
 
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -12,4 +13,5 @@ import java.util.Set;
 @Repository
 public interface MethodMapper {
     Set<FoodMethod> findAllMethod();
+    int addMethod(FoodMethod method);
 }

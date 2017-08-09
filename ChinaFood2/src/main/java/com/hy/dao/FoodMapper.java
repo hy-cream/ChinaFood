@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -19,6 +20,6 @@ public interface FoodMapper {
     @Select("SELECT * FROM f_food WHERE user_id = #{id}")
     Set<Food> findFoodsByUser(@Param("id") long id);
 
-    void addFood(Food food);
+    int addFood(Food food);
 
 }

@@ -5,6 +5,7 @@ import com.hy.bean.FoodCategory;
 import com.hy.bean.FoodScene;
 import com.hy.bean.FoodStyle;
 import com.hy.bean.FoodTaste;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
@@ -16,6 +17,7 @@ import java.util.Set;
 @Repository
 public interface CategoryMapper {
 
+    //获取菜系
     @Select("select * from f_category")
     Set<FoodCategory> findAllCategory();
 
@@ -27,4 +29,13 @@ public interface CategoryMapper {
 
     @Select("select * from f_taste")
     Set<FoodTaste> findAllTaste();
+
+    //添加菜系
+    int addStyle(@Param("foodId") Long foodId,@Param("styleId") Long styleId);
+
+    int addScene(@Param("foodId") Long foodId,@Param("sceneId") Long sceneId);
+
+    int addTaste(@Param("foodId") Long foodId,@Param("tasteId") Long tasteId);
+
+
 }

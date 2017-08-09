@@ -76,6 +76,23 @@ public class CategoryService {
         return treeY;
     }
 
+    //将各大菜系的关联插入表中
+    public int addStyles(Long foodId,Long styleId){
+        int num=0;
+        num=categoryMapper.addStyle(foodId,styleId);
+        return num;
+    }
 
+    public int addScenes(Long foodId,Long sceneId){
+        int num=0;
+        num=categoryMapper.addScene(foodId,sceneId);
+        return num;
+    }
+
+    public int addTaste(Long foodId,Long tasteId){
+        int num=0;
+        num=categoryMapper.addTaste(foodId,tasteId);
+        return num;
+    }
 
 }

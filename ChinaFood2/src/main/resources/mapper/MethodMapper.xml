@@ -29,4 +29,32 @@
         select * from f_method
     </select>
 
+    <!--
+    create table f_method(
+    id number primary key,
+    prepare_time varchar2(20),
+    cook_time varchar2(20),
+    main_material varchar2(200),
+    other_material varchar2(200),
+    step varchar2(1000),
+    issue_time date);
+
+       private long id;
+    private Food food;
+    private String prepare_time;
+    private String cook_time;
+    private String main_material;
+    private String other_material;
+    private String step;
+    private Date issue_time;
+
+    -->
+    <insert id="addMethod" parameterType="foodMethod">
+        <selectKey keyProperty="id" resultType="long" order="BEFORE">
+            select f_method_seq.nextval from dual
+        </selectKey>
+       insert into f_method(id,prepare_time,cook_time,main_material,other_material,step,issue_time)
+            values(#{id},#{prepare_time},#{cook_time},#{main_material},#{other_material},#{step},#{issue_time,jdbcType=TIMESTAMP})
+    </insert>
+
 </mapper>

@@ -3,7 +3,8 @@ package com.hy.bean;
 
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
+
 
 /**
  * Created by huyu on 2017/6/20.
@@ -19,6 +20,16 @@ public class FoodMethod implements Serializable,Comparable<FoodMethod>{
     private Date issue_time;
 
     public FoodMethod() {
+    }
+
+    public FoodMethod(String prepare_time, String cook_time,
+                      String main_material, String other_material, String step, Date issue_time) {
+        this.prepare_time = prepare_time;
+        this.cook_time = cook_time;
+        this.main_material = main_material;
+        this.other_material = other_material;
+        this.step = step;
+        this.issue_time = issue_time;
     }
 
     public long getId() {

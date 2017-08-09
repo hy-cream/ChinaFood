@@ -70,10 +70,6 @@
         select * from f_category where id=#{id}
     </select>
 
-
-   <!-- <select id="findMethodById" parameterType="long" resultMap="MethodResult">
-        select * from f_method where id=#{id}
-    </select>-->
     <select id="findStyById" parameterType="long" resultMap="StyleResult">
         select id,name
         from f_food_style,f_style
@@ -93,5 +89,30 @@
     </select>
 
     <!--添加食物-->
+    <!--
+    id number primary key,
+    name varchar2(40),
+    user_id number references f_user(id),
+    category_id number references f_category(id),
+    description varchar2(1000),
+    images varchar2(200),
+    state varchar2(20),
+    method_id number references f_method(id)
+
+        food.put("name",foodName);
+        food.put("cate",cateid);
+        food.put("style",styleid);
+        food.put("taste",tasteid);
+        food.put("scene",sceneid);
+        food.put("des",description);
+        food.put("user",user.getId());
+    -->
+    <insert id="addFood" parameterType="food">
+        <selectKey keyProperty="id" resultType="long" order="BEFORE">
+            select f_food_seq.nextval from dual
+        </selectKey>
+        insert into f_food(id,name,user_id,category_id,description,images,state,method_id)
+        values(#{id},#{name},#{user.id},#{category.id},#{description},#{images},#{state},#{method.id})
+    </insert>
 
 </mapper>

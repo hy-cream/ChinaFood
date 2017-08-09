@@ -16,6 +16,10 @@ public class FoodCategory implements Serializable,Comparable{
     public FoodCategory() {
     }
 
+    public FoodCategory(long id) {
+        this.id = id;
+    }
+
     public long getId() {
         return id;
     }

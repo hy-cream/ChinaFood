@@ -16,7 +16,7 @@
     <link rel="stylesheet" type="text/css" href="/static/css/imgup.css"/>
     <script src="/static/js/jQuery1.7.js" type="text/javascript" charset="utf-8"></script>
     <script src="/static/js/imgUp.js" type="text/javascript" charset="utf-8"></script>
-    <script src="/static/js/upload.js" type="text/javascript" charset="utf-8"></script>
+
 </head>
 <body>
 <!--顶部导航栏-->
@@ -52,7 +52,7 @@
         <li class="active">发布菜品</li>
     </div>
 </div>
-<form action="/addFood" method="POST" onsubmit="false " enctype="multipart/form-data">
+<form action="/addFood" method="POST" onsubmit="return upload()" enctype="multipart/form-data">
 <div class="container mt40">
 
     <div class="img-box full">
@@ -74,6 +74,43 @@
         </div>
     </aside>
 </div>
+    <%--确定菜系--%>
+    <div class="selectAll">
+            <span>所属菜系:</span>
+            <select name="cate" class="selectCate">
+                <c:forEach items="${applicationScope.category}" var="cate" varStatus="status">
+                    <%--<c:if test="${status.count==1}">
+                        <option value="" selected="selected">${cate.name}</option>
+                    </c:if>
+                    <c:if test="${status.count!=1}">
+                        <option value="" >${cate.name}</option>
+                    </c:if>--%>
+                    <option value="${cate.id}"  selected="">${cate.name}</option>
+                </c:forEach>
+            </select>
+
+            <div>
+                <span>所属菜品:</span>
+                <c:forEach items="${applicationScope.style}" var="style">
+                    <input type="checkbox" name="style" value="${style.id}" checked="">${style.name}
+                </c:forEach>
+            </div>
+
+        <div>
+            <span>所属口味:</span>
+            <c:forEach items="${applicationScope.taste}" var="taste">
+                <input type="checkbox" name="taste" value="${taste.id}" checked="">${taste.name}
+            </c:forEach>
+        </div>
+
+        <div>
+            <span>所属场景:</span>
+            <c:forEach items="${applicationScope.scene}" var="scene">
+                <input type="checkbox" name="scene" value="${scene.id}" checked="">${scene.name}
+            </c:forEach>
+        </div>
+
+    </div>
 <div class="container mt40 center">
     <h3 class="mb50">花了多少时间</h3>
     <ul class="mb50">
@@ -102,6 +139,8 @@
     <p class="fb-name mb50">
         <input type="text"  id="cookName" name="name" placeholder="如:红烧猪蹄"><span class="checkUpload" id="nameError"></span>
     </p>
+    <h3 class="mb50">一句话描述这道菜吧~</h3>
+    <textarea id="description" rows="10" cols="100" class="mb50 pd20" name="description"></textarea><br><span class="checkUpload" id="desError"></span>
     <div class="fb-button mb50">
         <%--<button type="button" id="bf-button">提交</button>--%>
         <input type="submit" value="提交">

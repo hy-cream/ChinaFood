@@ -94,5 +94,8 @@
         update f_user set password=#{password} where id=#{id}
     </update>
 
-    <!--insert into f_user(id,name,password,province,city,description,gender) values(f_user_seq.nextval,'kkk','kkk','江西','南昌','ddd','男');-->
+    <insert id="addFood">
+            insert into f_food(id,name,password,province,city,description,gender)
+            values(f_user_seq.nextval,'kkk','kkk','江西','南昌','ddd','男')
+    </insert>
 </mapper>

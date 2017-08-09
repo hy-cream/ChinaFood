@@ -40,7 +40,7 @@ public class DefController {
     public String defaultCon(HttpServletRequest request){
 
         ServletContext context=request.getServletContext();
-        //第一次加载将首页信息放进application的范围内
+        //第一次加载将首页信息放进application的范围内，用缓存处理，这里要设置缓存，动态更新的菜品信息那里不应该用缓存，应该是实时更新
         if(context.getAttribute("dinner")==null){
             //放入所有的分类
             context.setAttribute("category",categoryService.getAllCate());

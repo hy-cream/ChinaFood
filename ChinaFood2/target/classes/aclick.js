@@ -1,3 +1,5 @@
+
+/*-----------------显示食物的筛选--------------------*/
 function aOnClick(name,id) {
 
    /* alert("click--"+name);*/
@@ -36,7 +38,8 @@ function aOnClick(name,id) {
         $("#replace").html(str);
     });
 }
-
+/*-----------------------------------------*/
+/*-------------------------菜的跳转--------------------*/
 function caipu(id,userid) {
     window.location.href="http://localhost:8090/foodView?id="+id+"&userid="+userid;
 }
@@ -45,8 +48,8 @@ function zuofa(id) {
     alert(id);
     window.location.href="http://localhost:8090/foodMethod?id="+id;
 }
-
-//注册判断
+/*-----------------------------------*/
+/*-------------------注册判断----------------*/
 function register() {
 
    var check=$(".result");
@@ -132,4 +135,6 @@ $(document).ready(function() {
         }
     });
 });
+/*--------------------------------*/
+
 
